@@ -4,16 +4,18 @@ import Cover from '../Pages/SharedPage/Cover/Cover';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useMenu from '../Hoks/UseMenu';
-import FoodCart from './FoodCart/FoodCart';
 import OrderTab from './Order/OrderTab';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 
 const OurShop = () => {
-    const [tabIndex, setIndex] = useState(0)
-    const [menu] = useMenu();
+    const categories = ['salad', 'pizza', 'soup','dessert', 'drinks'];
     const {category} = useParams();
-    console.log(category)
+    const initialIndex = categories.indexOf(category);
+    const [tabIndex, setIndex] = useState(initialIndex);
+    const [menu] = useMenu();
+   
     const dessert = menu.filter(item => item.category === "dessert");
     const soup = menu.filter(item => item.category === "soup");
     const salad = menu.filter(item => item.category === "salad");
@@ -21,6 +23,9 @@ const OurShop = () => {
     const drinks = menu.filter(item => item.category === "drinks");
     return (
         <div>
+              <Helmet>
+            <title>cafe Rio | Our Shop</title>
+            </Helmet>
             <Cover img={shopImg} title='our shop'></Cover>
             <Tabs defaultIndex={tabIndex} onSelect={(index) => setIndex(index)}>
                 <TabList>
