@@ -2,7 +2,7 @@ import React from 'react';
 import UseCart from '../../../Hoks/UseCart';
 import { FaTrash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import UseAxiosSecure from '../../../Hoks/Axios/UseAxiosSecure';
+import UseAxiosSecure from '../../../Hoks/Axios/useAxiosSecure';
 
 const Cart = () => {
     const [cart, refetch] = UseCart();

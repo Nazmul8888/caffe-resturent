@@ -4,7 +4,9 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from '../../../../Provider/AuthProvider';
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
-import UseAxiosPublic from "../../../Hoks/Axios/UseAxiosPublic";
+import UseAxiosPublic from "../../../Hoks/Axios/useAxiosPublic";
+import axios from "axios";
+
 
 
 const SignUp = () => {
@@ -26,9 +28,9 @@ const SignUp = () => {
                             email: data.email
                         }
 
-                        axiosPublic.post('/users', userInfo)
-                            .then(data => {
-                                if (reset.data.insertedId) {
+                        axios.post('http://localhost:5000/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
                                     console.log('user added database')
                                     reset();
                                     Swal.fire({

@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import UseAuth from "../../../Provider/Hoks/UseAuth";
 import Swal from 'sweetalert2'
-import UseAxiosSecure from "../../Hoks/Axios/UseAxiosSecure";
+import UseAxiosSecure from "../../Hoks/Axios/useAxiosSecure";
 import UseCart from "../../Hoks/UseCart";
 
 
@@ -62,7 +62,7 @@ const FoodCart = ({item}) => {
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <figure><img src={image} alt="Shoes" /></figure>
-            <p className=" absolute right-0 text-white rounded-lg bg-slate-900 mt-4 mr-4 px-4">$ {price}</p>
+            <p className=" absolute right-0 text-white rounded-lg bg-red-600 hover:bg-pink-600 mt-4 mr-4 px-4">$ {price}</p>
             <div className="card-body flex flex-col items-center">
                 <h2 className="card-title">{name}</h2>
                 <p>{recipe}</p>
