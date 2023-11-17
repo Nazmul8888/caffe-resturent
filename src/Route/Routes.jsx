@@ -13,6 +13,8 @@ import Secret from "../Provider/Secret/Secret";
 import Dashboard from "../components/Layout/Dashboard/Dashboard";
 import Cart from "../components/Layout/Dashboard/Cart/Cart";
 import AllUser from "../components/Layout/Dashboard/AllUser/AllUser";
+import AddItems from "../components/Layout/Dashboard/AddItems/AddItems";
+import AdminRoute from "../components/Hoks/Axios/adminRoute";
 
 
   export const router = createBrowserRouter([
@@ -57,8 +59,12 @@ import AllUser from "../components/Layout/Dashboard/AllUser/AllUser";
         },
         // admin side
         {
-          path: 'user',
-          element: <AllUser></AllUser>
+          path: 'addItems',
+          element: <AdminRoute><AddItems></AddItems></AdminRoute>
+        },
+        {
+          path: 'users',
+          element: <AdminRoute><AllUser></AllUser></AdminRoute>
         }
       ]
     }
