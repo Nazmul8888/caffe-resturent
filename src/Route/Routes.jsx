@@ -63,7 +63,7 @@ import AdminRoute from "../components/Hoks/Axios/adminRoute";
           element: <AdminRoute><AddItems></AddItems></AdminRoute>
         },
         {
-          path: 'users',
+          path: 'user',
           element: <AdminRoute><AllUser></AllUser></AdminRoute>
         }
       ]

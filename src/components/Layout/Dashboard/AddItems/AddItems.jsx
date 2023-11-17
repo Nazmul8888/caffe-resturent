@@ -1,11 +1,43 @@
 import { useForm } from "react-hook-form";
 import SectionTitle from "../../../../component/SectionTitle/SectionTitle";
 import { FaUtensils } from "react-icons/fa";
+import useAxiosPublic from "../../../Hoks/Axios/useAxiosPublic";
+import useAxiosSecure from "../../../Hoks/Axios/UseAxiosSecure";
 
-
+const image_hosting_key= '5f2392a5712f1aa41c22a6e58d128ac1'
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 const AddItems = () => {
     const { register, handleSubmit } = useForm()
-    const onSubmit = (data) => console.log(data)
+    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
+    const onSubmit = async (data) =>{
+        const formData = new FormData();
+        formData.append('image', data.image[0])
+
+        fetch( image_hosting_api,{
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json()).then((res)=>{
+            const imgUrl=res.data.display_url
+            console.log(imgUrl)
+        });
+        if(res.data.success){
+            const menuItem ={
+                name: data.name,
+                category: data.category,
+                recipe: data.recipe,
+                image: res.data.display_url
+            }
+            const menuRes = await axiosSecure.post('/menu',menuItem);
+            console.log(menuRes);
+            if(menuRes.data.insertedId){
+                // show data
+            }
+        }
+        console.log('with image url', res.data);
+
+    };
     return (
         <div>
             <SectionTitle heading='add an item' subHeading='whats New'></SectionTitle>
@@ -29,9 +61,9 @@ const AddItems = () => {
                             <label className="label">
                                 <span className="label-text">Category</span>
                             </label>
-                            <select {...register('category',{required: true})}
+                            <select defaultValue='default' {...register('category',{required: true})}
                                 className="select select-bordered w-full ">
-                                <option disabled selected>Select a category </option>
+                                <option disabled value='default' selected>Select a category </option>
                                 <option value="salad">Salad</option>
                                 <option value="pizza">Pizza</option>
                                 <option value="soup">Soup</option>

@@ -11,6 +11,7 @@ const firebaseConfig = {
   storageBucket: "caffe-resturent.appspot.com",
   messagingSenderId: "164287563143",
   appId: "1:164287563143:web:7269d1e3e3027064a8bf22"
+  
 };
 
 // Initialize Firebase
