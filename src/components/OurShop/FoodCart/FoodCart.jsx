@@ -1,8 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import UseAuth from "../../../Provider/Hoks/UseAuth";
+import UseAuth from "../../../Provider/Hoks/useAuth";
 import Swal from 'sweetalert2'
-import UseAxiosSecure from "../../Hoks/Axios/useAxiosSecure";
+
 import UseCart from "../../Hoks/UseCart";
+import useAxiosSecure from "../../Hoks/Axios/useAxiosSecure";
 
 
 
@@ -12,7 +13,7 @@ const FoodCart = ({item}) => {
     const {user} = UseAuth();
     const navigate = useNavigate();
  const location = useLocation();
- const axiosSecure = UseAxiosSecure();
+ const axiosSecure = useAxiosSecure();
  const [, refetch] = UseCart();
     
     const handelAddToCart = ()=>{

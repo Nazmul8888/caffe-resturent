@@ -15,6 +15,7 @@ import Cart from "../components/Layout/Dashboard/Cart/Cart";
 import AllUser from "../components/Layout/Dashboard/AllUser/AllUser";
 import AddItems from "../components/Layout/Dashboard/AddItems/AddItems";
 import AdminRoute from "../components/Hoks/Axios/adminRoute";
+import ManageItems from "../components/Layout/Dashboard/ManageItems/ManageItems";
 
 
   export const router = createBrowserRouter([
@@ -61,6 +62,10 @@ import AdminRoute from "../components/Hoks/Axios/adminRoute";
         {
           path: 'addItems',
           element: <AdminRoute><AddItems></AddItems></AdminRoute>
+        },
+        {
+          path: 'manageItems',
+          element: <ManageItems></ManageItems>
         },
         {
           path: 'user',

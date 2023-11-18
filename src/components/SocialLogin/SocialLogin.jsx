@@ -1,5 +1,5 @@
 import { FaGoogle } from "react-icons/fa";
-import UseAuth from "../../Provider/Hoks/UseAuth";
+import UseAuth from "../../Provider/Hoks/useAuth";
 import UseAxiosPublic from "../Hoks/Axios/useAxiosPublic";
 import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../Hoks/Axios/useAxiosPublic";
@@ -18,6 +18,7 @@ const SocialLogin = () => {
                 email: result.user?.email,
                 name: result.user?.displayName
             }
+            navigate('/')
             axiosPublic.post('/users',userInfo)
             .then(res=>{
                 console.log(res.data)

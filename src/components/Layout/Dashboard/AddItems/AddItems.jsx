@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import SectionTitle from "../../../../component/SectionTitle/SectionTitle";
 import { FaUtensils } from "react-icons/fa";
 import useAxiosPublic from "../../../Hoks/Axios/useAxiosPublic";
-import useAxiosSecure from "../../../Hoks/Axios/UseAxiosSecure";
+import useAxiosSecure from "../../../Hoks/Axios/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const image_hosting_key= '5f2392a5712f1aa41c22a6e58d128ac1'
@@ -19,30 +19,31 @@ const AddItems = () => {
             method: 'POST',
             body: formData
         })
-        .then(res => res.json()).then((res)=>{
+        .then(res => res.json()) .then(async(res)=>{
             const imgUrl=res.data.display_url
-            console.log(imgUrl)
+            console.log(res.data)
+            if(res.data.url){
+                const menuItem ={
+                    name: data.name,
+                    category: data.category,
+                    recipe: data.recipe,
+                    image: res.data.display_url
+                }
+                const menuRes = await axiosSecure.post('/menu',menuItem);
+                console.log(menuRes);
+                if(menuRes.data.insertedId){
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${data.name} is added data`,
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                }
+            }
+            console.log('with image url', res.data);
         });
-        if(res.data.success){
-            const menuItem ={
-                name: data.name,
-                category: data.category,
-                recipe: data.recipe,
-                image: res.data.display_url
-            }
-            const menuRes = await axiosSecure.post('/menu',menuItem);
-            console.log(menuRes);
-            if(menuRes.data.insertedId){
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${data.name} is added data`,
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-            }
-        }
-        console.log('with image url', res.data);
+        
 
     };
     return (

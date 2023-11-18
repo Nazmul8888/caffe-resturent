@@ -3,7 +3,7 @@ import shopImg from '../../assets/shop/banner2.jpg'
 import Cover from '../Pages/SharedPage/Cover/Cover';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import useMenu from '../Hoks/UseMenu';
+import useMenu from '../Hoks/useMenu';
 import OrderTab from './Order/OrderTab';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
