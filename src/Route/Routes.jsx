@@ -18,6 +18,7 @@ import AdminRoute from "../components/Hoks/Axios/adminRoute";
 import ManageItems from "../components/Layout/Dashboard/ManageItems/ManageItems";
 import UpdateItem from "../components/Layout/Dashboard/Update/UpdateItem";
 import Payment from "../components/Layout/Dashboard/Payment/Payment";
+import PaymentHistory from "../components/Layout/Dashboard/Payment/PaymentHistory";
 
 
   export const router = createBrowserRouter([
@@ -64,6 +65,10 @@ import Payment from "../components/Layout/Dashboard/Payment/Payment";
         {
           path: 'payment',
           element: <Payment></Payment>
+        },
+        {
+          path: 'paymentHistory',
+          element: <PaymentHistory></PaymentHistory>
         },
 
         // admin side
