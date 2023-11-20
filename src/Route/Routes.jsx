@@ -16,6 +16,8 @@ import AllUser from "../components/Layout/Dashboard/AllUser/AllUser";
 import AddItems from "../components/Layout/Dashboard/AddItems/AddItems";
 import AdminRoute from "../components/Hoks/Axios/adminRoute";
 import ManageItems from "../components/Layout/Dashboard/ManageItems/ManageItems";
+import UpdateItem from "../components/Layout/Dashboard/Update/UpdateItem";
+import Payment from "../components/Layout/Dashboard/Payment/Payment";
 
 
   export const router = createBrowserRouter([
@@ -54,10 +56,16 @@ import ManageItems from "../components/Layout/Dashboard/ManageItems/ManageItems"
       path: 'dashboard',
       element: <Dashboard></Dashboard>,
       children:[
+        // normal user side
         {
           path: 'cart',
           element: <Cart></Cart>
         },
+        {
+          path: 'payment',
+          element: <Payment></Payment>
+        },
+
         // admin side
         {
           path: 'addItems',
@@ -66,6 +74,11 @@ import ManageItems from "../components/Layout/Dashboard/ManageItems/ManageItems"
         {
           path: 'manageItems',
           element: <ManageItems></ManageItems>
+        },
+        {
+          path: 'updateItem/:id',
+          element: <UpdateItem></UpdateItem>,
+          loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
         },
         {
           path: 'user',

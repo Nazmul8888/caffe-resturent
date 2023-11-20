@@ -21,7 +21,8 @@ const useMenu = () =>{
         queryKey: ['menu'],
         queryFn: async()=>{
             const res = await axiosPublic.get('/menu');
-            return rs.data;
+           
+            return res.data;
         }
     })
     return[menu,loading, refetch]
