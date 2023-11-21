@@ -60,7 +60,7 @@ const CheckOutForm = () => {
             console.log('error', error);
             setError(error.message)
           } else {
-            console.log('[PaymentMethod]', paymentMethod);
+            console.log('[PaymentMethod]',paymentMethod);
             setError('')
           }
 
@@ -89,11 +89,11 @@ const CheckOutForm = () => {
               const payment = {
                 email: user.email,
                 price: totalPrice,
-                transactionId: transactionId.id,
+                transactionId: paymentIntent.id,
                 date: new Date(),
-                cartIds: cart.map(item=> item._id),
-                menuItemIds: cart.map(item=> item.menuId),
-                status: 'pending'
+                cartIds: cart.map(item => item._id),
+                    menuItemIds: cart.map(item => item.menuId),
+                    status: 'pending'
               }
             const res = await axiosSecure.post('/payments', payment)
               console.log('payment save', res.data)
@@ -120,13 +120,13 @@ const CheckOutForm = () => {
           style: {
             base: {
               fontSize: '16px',
-              color: '#424770',
+              color: '#29ADB2',
               '::placeholder': {
-                color: '#aab7c4',
+                color: '#FF5B22',
               },
             },
             invalid: {
-              color: '#9e2146',
+              color: '#29ADB2',
             },
           },
         }}
