@@ -28,7 +28,7 @@ const SignUp = () => {
                             email: data.email
                         }
 
-                        axios.post('https://cafe-server-five.vercel.app//users', userInfo)
+                        axios.post('http://localhost:5000//users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
                                     console.log('user added database')

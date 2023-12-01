@@ -93,7 +93,7 @@ import AdminHome from "../components/Layout/Dashboard/AdminHome/AdminHome";
         {
           path: 'updateItem/:id',
           element: <UpdateItem></UpdateItem>,
-          loader: ({params}) => fetch(`https://cafe-server-five.vercel.app//menu/${params.id}`)
+          loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
         },
         {
           path: 'user',

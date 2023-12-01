@@ -26,7 +26,7 @@ const AllUser = () => {
 
     const handelMakeAdmin = user =>{
         axiosSecure.patch(`/user/admin/${user._id}`)
-        // axios.patch(`https://cafe-server-five.vercel.app//users/admin${user._id}`)
+        // axios.patch(`http://localhost:5000//users/admin${user._id}`)
         .then(res=>{
             console.log(res.data)
             if(res.data.modifiedCount > 0){
